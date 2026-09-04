@@ -7,9 +7,49 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Me
+# Library System
 
-Fad Thousand a.k.a ||Abdurrahman Fadly (2410631250001)||. Tech enthusiast and storyteller. Currently studying Web Framework Programming.
+## Description
+
+A simple library system that allows users to manage books, authors, and borrowers.
+
+## Requirements
+
+- PHP >= 8.1
+- Composer
+- MySQL / MariaDB
+- Laravel
+
+## Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/fadthousand/library-system.git
+   ```
+2. Install dependencies via Composer:
+   ```bash
+   cd library-system
+   composer install
+   ```
+3. Copy the environment configuration file and generate the application key:
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
+4. Configure your database settings in the `.env` file.
+
+5. Run the database migrations:
+   ```bash
+   php artisan migrate
+   ```
+6. Start the development server:
+   ```bash
+   php artisan serve
+   ```
+
+## Author
+
+Fad Thousand a.k.a Abdurrahman Fadly (2410631250001). 5A. Tech enthusiast and storyteller. Currently studying Web Framework Programming.
 
 ## About Laravel
 
