@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class DashboardController extends Controller
 {
-    public function index()
+    public function index(): View
     {
         $title = 'Library System Dashboard';
         $description = 'Selamat datang di Sistem Informasi Perpustakaan.';
