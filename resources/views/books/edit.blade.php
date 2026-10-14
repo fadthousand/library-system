@@ -11,22 +11,34 @@
 
         <div style="margin-bottom: 10px;">
             <label>Judul:</label><br>
-            <input type="text" name="title" value="{{ $book->title }}" required>
+            <input type="text" name="title" value="{{ old('title', $book->title) }}">
+            @error('title')
+                <p style="color: red; margin: 0; font-size: 12px;">{{ $message }}</p>
+            @enderror
         </div>
 
         <div style="margin-bottom: 10px;">
             <label>Penulis:</label><br>
-            <input type="text" name="author" value="{{ $book->author }}" required>
+            <input type="text" name="author" value="{{ old('author', $book->author) }}">
+            @error('author')
+                <p style="color: red; margin: 0; font-size: 12px;">{{ $message }}</p>
+            @enderror
         </div>
 
         <div style="margin-bottom: 10px;">
             <label>Tahun Terbit:</label><br>
-            <input type="number" name="year" value="{{ $book->year }}" required>
+            <input type="number" name="year" value="{{ old('year', $book->year) }}">
+            @error('year')
+                <p style="color: red; margin: 0; font-size: 12px;">{{ $message }}</p>
+            @enderror
         </div>
 
         <div style="margin-bottom: 10px;">
             <label>Stok:</label><br>
-            <input type="number" name="stock" value="{{ $book->stock }}" required>
+            <input type="number" name="stock" value="{{ old('stock', $book->stock) }}">
+            @error('stock')
+                <p style="color: red; margin: 0; font-size: 12px;">{{ $message }}</p>
+            @enderror
         </div>
 
         <button type="submit">Update</button>

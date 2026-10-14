@@ -25,13 +25,17 @@ class BookController extends Controller
 
     public function store(Request $request): RedirectResponse
     {
-        Book::query()->create([
-            'title' => $request->title,
-            'author' => $request->author,
-            'year' => $request->year,
-            'stock' => $request->stock,
+        // Saving data after validation
+        $validated = $request->validate([
+            'title' => 'required|string|max:255|unique:books,title', // New rule: unique
+            'author' => 'required|string|max:255',
+            'year' => 'required|integer|min:1900|max:' . date('Y'), // New rule: dynamic maximum up to the current year
+            'stock' => 'required|integer|min:0',
         ]);
-        return redirect()->route('books.index');
+
+        Book::query()->create($validated);
+
+        return redirect()->route('books.index')->with('success', 'Data buku berhasil ditambahkan.');
     }
 
     public function show(Book $book): View
@@ -46,13 +50,17 @@ class BookController extends Controller
 
     public function update(Request $request, Book $book): RedirectResponse
     {
-        $book->update([
-            'title' => $request->title,
-            'author' => $request->author,
-            'year' => $request->year,
-            'stock' => $request->stock,
+        // Validate by excluding the book title currently being edited to avoid duplicate detection
+        $validated = $request->validate([
+            'title' => 'required|string|max:255|unique:books,title,' . $book->id,
+            'author' => 'required|string|max:255',
+            'year' => 'required|integer|min:1900|max:' . date('Y'),
+            'stock' => 'required|integer|min:0',
         ]);
-        return redirect()->route('books.index');
+
+        $book->update($validated);
+
+        return redirect()->route('books.index')->with('success', 'Data buku berhasil diperbarui.');
     }
 
     public function destroy(Book $book): RedirectResponse

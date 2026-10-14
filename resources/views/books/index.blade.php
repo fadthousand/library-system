@@ -5,6 +5,12 @@
 @section('content')
     <h2>Daftar Buku</h2>
 
+    @if(session('success'))
+        <div style="color: green; margin-bottom: 15px; padding: 10px; border: 1px solid green;">
+            {{ session('success') }}
+        </div>
+    @endif
+
     @if($stock > 0)
         <p>Status Perpustakaan: Stok buku tersedia (Total simulasi stok: {{ $stock }}).</p>
     @else
