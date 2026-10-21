@@ -40,6 +40,21 @@
             @enderror
         </div>
 
+        <div style="margin-bottom: 10px;">
+            <label for="category_id">Kategori:</label><br>
+            <select name="category_id" id="category_id">
+                <option value="">Pilih kategori</option>
+                @foreach ($categories as $category)
+                    <option value="{{ $category->id }}" @selected(old('category_id') == $category->id)>
+                        {{ $category->name }}
+                    </option>
+                @endforeach
+            </select>
+            @error('category_id')
+                <p style="color: red; margin: 0; font-size: 12px;">{{ $message }}</p>
+            @enderror
+        </div>
+
         <button type="submit">Simpan</button>
         <a href="{{ route('books.index') }}">Batal</a>
     </form>

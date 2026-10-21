@@ -25,6 +25,8 @@
         @foreach($books as $book)
             <li style="margin-bottom: 10px;">
                 <strong>{{ $book->title }}</strong> - {{ $book->author }} ({{ $book->year }}) - Stok: {{ $book->stock }}
+                <br>
+                <span>Kategori: {{ $book->category?->name ?? 'Belum ada kategori' }}</span>
 
                 <!-- Navigasi Aksi -->
                 <div style="display: inline-block; margin-left: 10px;">
