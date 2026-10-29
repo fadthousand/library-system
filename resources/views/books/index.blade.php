@@ -11,6 +11,13 @@
         </div>
     @endif
 
+    <div style="margin-bottom: 15px;">
+        <form action="{{ route('logout') }}" method="POST">
+            @csrf
+            <button type="submit" style="background-color: #ff4c4c; color: white; border: none; padding: 5px 10px; cursor: pointer;">Logout</button>
+        </form>
+    </div>
+
     @if($stock > 0)
         <p>Status Perpustakaan: Stok buku tersedia (Total simulasi stok: {{ $stock }}).</p>
     @else
